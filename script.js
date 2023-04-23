@@ -8,10 +8,10 @@ updateForm.addEventListener('submit', async (event) => {
   const email = event.target.elements.email.value;
 
   try {
-    const response = await fetch('https://api.github.com/repos/username/repo/contents/data.json', {
+    const response = await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
       method: 'GET',
       headers: {
-        'Authorization': 'Basic ' + btoa('admin_username:admin_password')
+        'Authorization': 'Basic ' + btoa('username:password')
       }
     });
     const data = await response.json();
@@ -24,10 +24,10 @@ updateForm.addEventListener('submit', async (event) => {
     existingData.push(newData);
     const content = btoa(JSON.stringify(existingData));
     const sha = data.sha;
-    await fetch('https://api.github.com/repos/username/repo/contents/data.json', {
+    await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
       method: 'PUT',
       headers: {
-        'Authorization': 'Basic ' + btoa('admin_username:admin_password')
+        'Authorization': 'Basic ' + btoa('username:password')
       },
       body: JSON.stringify({
         message: 'Update virtual database',
@@ -52,7 +52,7 @@ viewForm.addEventListener('submit', async (event) => {
   const password = event.target.elements.password.value;
 
   try {
-    const response = await fetch('https://api.github.com/repos/username/repo/contents/data.json', {
+    const response = await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa(`${username}:${password}`)
@@ -82,7 +82,7 @@ searchForm.addEventListener('submit', async (event) => {
   const name = event.target.elements['name'].value;
 
   try {
-    const response = await fetch('https://api.github.com/repos/username/repo/contents/data.json', {
+    const response = await fetch('https://api.https://github.com/artemis-love/test1/blob/main/ex-service.json', {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('username:password')
