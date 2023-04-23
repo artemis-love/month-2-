@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Virtual Database</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Update Virtual Database</h1>
+      <form id="update-form">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <button type="submit">Update</button>
+      </form>
+      <div id="message"></div>
+    </div>
+
+    <div class="container">
+      <h1>View Virtual Database</h1>
+      <form id="view-form">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+        </div>
+        <button type="submit">View</button>
+      </form>
+      <table id="data-table"></table>
+      <div id="view-message"></div>
+    </div>
+
+    <div class="container">
+      <h1>Search Virtual Database</h1>
+      <form id="search-form">
+        <div class="form-group">
+          <label for="student-id">Student ID:</label>
+          <input type="number" id="student-id" name="student-id">
+        </div>
+        <button type="submit">Search</button>
+      </form>
+      <table id="search-table"></table>
+      <div id="search-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
