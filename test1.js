@@ -79,19 +79,19 @@ const searchForm = document.getElementById('search-form');
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const studentId = event.target.elements['student-id'].value;
+  const name = event.target.elements['name'].value;
 
   try {
     const response = await fetch('https://api.github.com/repos/username/repo/contents/data.json', {
       method: 'GET',
       headers: {
-        'Authorization': 'Basic ' + btoa('admin_username:admin_password')
+        'Authorization': 'Basic ' + btoa('username:password')
       }
     });
     const data = await response.json();
     const content = atob(data.content);
     const jsonData = JSON.parse(content);
-    const row = jsonData.find((item) => item.studentId === studentId);
+    const row = jsonData.find((item) => item.name === name);
     let tableHtml = '<tr><th>Name</th><th>Age</th><th>Email</th></tr>';
     if (row) {
       tableHtml
