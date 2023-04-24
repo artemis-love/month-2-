@@ -65,4 +65,19 @@ viewForm.addEventListener("submit", (e) => {
     .then((response) => response.json())
     .then((data) => {
       const content = JSON.parse(data.files["virtualdb.json"].content);
-      const headers = ["Name", "Age",
+      const headers = ["Name", "Age", "Email"];
+
+      // Create table
+      let tableHtml = "<tr><th>Name</th><th>Age</th><th>Email</th></tr>";
+      content.forEach((item) => {
+        tableHtml += `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.email}</td></tr>`;
+      });
+
+      viewTable.innerHTML = tableHtml;
+      viewMessage.textContent = "";
+    })
+    .catch((error) => {
+      viewTable.innerHTML = "";
+      viewMessage.textContent = "Error fetching data";
+    });
+});
