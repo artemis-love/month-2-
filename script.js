@@ -1,5 +1,4 @@
-
-// Update Form
+<!-- Update Form -->
 const updateForm = document.getElementById("update-form");
 const updateMessage = document.getElementById("message");
 
@@ -17,8 +16,8 @@ updateForm.addEventListener("submit", (e) => {
     email,
   };
 
-  // Make POST request to update data
-  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb/raw/virtualdb.json", {
+  // Make PATCH request to update data
+  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +47,7 @@ const viewForm = document.getElementById("view-form");
 const viewTable = document.getElementById("data-table");
 const viewMessage = document.getElementById("view-message");
 
-viewForm.addEventListener("submit", (e) => {
+viewForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const username = document.getElementById("username").value;
@@ -71,18 +70,56 @@ viewForm.addEventListener("submit", (e) => {
     const content = JSON.parse(data.files["virtualdb.json"].content);
     const headers = ["Name", "Age", "Email"];
     
-      // Create table
-      let tableHtml = "<tr><th>Name</th><th>Age</th><th>Email</th></tr>";
-      content.forEach((item) => {
-        tableHtml += `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.email}</td></tr>`;
-      });
-
-      viewTable.innerHTML = tableHtml;
-      viewMessage.textContent = "";
-    })
-    .catch((error) => {
-      viewTable.innerHTML = "";
-      viewMessage.textContent = "Error fetching data";
-      console.error(error);
+    // Create table
+    let tableHtml = "<tr><th>Name</th><th>Age</th><th>Email</th></tr>";
+    content.forEach((item) => {
+      tableHtml += `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.email}</td></tr>`;
     });
+
+    viewTable.innerHTML = tableHtml;
+    viewMessage.textContent = "";
+  } catch (error) {
+    viewTable.innerHTML = "";
+    viewMessage.textContent = "Error fetching data";
+    console.error(error);
+  }
+});
+
+// Search Form
+const searchForm = document.getElementById("search-form");
+const searchTable = document.getElementById("search-table");
+const searchMessage = document.getElementById("search-message");
+
+searchForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+
+  try {
+    // Make GET request to fetch data
+    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${ response.status}`);
+}
+const data = await response.json();
+const content = JSON.parse(data.files["virtualdb.json"].content);
+const headers = ["Name", "Age", "Email"];
+
+// Filter data
+const filteredData = content.filter((item) => item.name.toLowerCase().includes(name.toLowerCase()));
+
+// Create table
+let tableHtml = "<tr><th>Name</th><th>Age</th><th>Email</th></tr>";
+filteredData.forEach((item) => {
+  tableHtml += `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.email}</td></tr>`;
+});
+
+searchTable.innerHTML = tableHtml;
+searchMessage.textContent = "";
+} catch (error) {
+searchTable.innerHTML = "";
+searchMessage.textContent = "Error searching data";
+console.error(error);
+}
 });
