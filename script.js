@@ -23,7 +23,7 @@ updateForm.addEventListener("submit", (e) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/vnd.github.v3+json",
-      Authorization: "token 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",
+      Authorization: "token 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",
     },
     body: JSON.stringify({
       files: {
