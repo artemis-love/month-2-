@@ -18,7 +18,7 @@ updateForm.addEventListener("submit", (e) => {
   };
 
   // Make POST request to update data
-  fetch("https://api.artemis-love.github.io/test1/?name=diana+santiago", {
+  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ viewForm.addEventListener("submit", (e) => {
   }
 
   // Make GET request to fetch data
-  fetch("https://api.artemis-love.github.io/test1/?name=diana+santiago")
+  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb")
     .then((response) => response.json())
     .then((data) => {
       const content = JSON.parse(data.files["virtualdb.json"].content);
