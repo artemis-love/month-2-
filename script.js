@@ -17,7 +17,7 @@ updateForm.addEventListener("submit", (e) => {
   };
 
   // Make PATCH request to update data
-  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb", {
+  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb/raw/virtualdb.json", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ viewForm.addEventListener("submit", async (e) => {
 
   try {
     // Make GET request to fetch data
-    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb");
+    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb/raw/virtualdb.json");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -97,7 +97,7 @@ searchForm.addEventListener("submit", async (e) => {
 
   try {
     // Make GET request to fetch data
-    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb");
+    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb/raw/virtualdb.json");
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${ response.status}`);
