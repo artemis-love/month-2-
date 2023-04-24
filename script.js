@@ -60,13 +60,17 @@ viewForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Make GET request to fetch data
-  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb")
-    .then((response) => response.json())
-    .then((data) => {
-      const content = JSON.parse(data.files["virtualdb.json"].content);
-      const headers = ["Name", "Age", "Email"];
+  try {
+    // Make GET request to fetch data
+    const response = await fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb");
 
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    const content = JSON.parse(data.files["virtualdb.json"].content);
+    const headers = ["Name", "Age", "Email"];
+    
       // Create table
       let tableHtml = "<tr><th>Name</th><th>Age</th><th>Email</th></tr>";
       content.forEach((item) => {
@@ -79,5 +83,6 @@ viewForm.addEventListener("submit", (e) => {
     .catch((error) => {
       viewTable.innerHTML = "";
       viewMessage.textContent = "Error fetching data";
+      console.error(error);
     });
 });
