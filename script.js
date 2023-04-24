@@ -18,7 +18,7 @@ updateForm.addEventListener("submit", (e) => {
   };
 
   // Make POST request to update data
-  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb", {
+  fetch("https://api.github.com/gists/da0faa094a0d6e1e3ce8c8cd143bf6eb/raw/virtualdb.json", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
