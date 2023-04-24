@@ -18,7 +18,7 @@ updateForm.addEventListener("submit", (e) => {
   };
 
   // Make POST request to update data
-  fetch("https://api.github.com/gists/GIST_ID", {
+  fetch("https://api.artemis-love.github.io/test1/?name=diana+santiago", {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -55,13 +55,13 @@ viewForm.addEventListener("submit", (e) => {
   const password = document.getElementById("password").value;
 
   // Authenticate user
-  if (username !== "admin" || password !== "password") {
+  if (username !== "username" || password !== "password") {
     viewMessage.textContent = "Invalid username or password";
     return;
   }
 
   // Make GET request to fetch data
-  fetch("https://api.github.com/gists/GIST_ID")
+  fetch("https://api.artemis-love.github.io/test1/?name=diana+santiago")
     .then((response) => response.json())
     .then((data) => {
       const content = JSON.parse(data.files["virtualdb.json"].content);
