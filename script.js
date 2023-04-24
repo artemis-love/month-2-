@@ -1,97 +1,68 @@
-// Update form submission
-const updateForm = document.getElementById('update-form');
-updateForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
 
-  const name = event.target.elements.name.value;
-  const age = event.target.elements.age.value;
-  const email = event.target.elements.email.value;
+// Update Form
+const updateForm = document.getElementById("update-form");
+const updateMessage = document.getElementById("message");
 
-  try {
-    const response = await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Basic ' + btoa('username:password')
-      }
-    });
-    const data = await response.json();
-    const newData = {
-      name,
-      age,
-      email
-    };
-    const existingData = JSON.parse(atob(data.content));
-    existingData.push(newData);
-    const content = btoa(JSON.stringify(existingData));
-    const sha = data.sha;
-    await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
-      method: 'PUT',
-      headers: {
-        'Authorization': 'Basic ' + btoa('username:password')
+updateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const email = document.getElementById("email").value;
+
+  // Create data object
+  const data = {
+    name,
+    age,
+    email,
+  };
+
+  // Make POST request to update data
+  fetch("https://api.github.com/gists/GIST_ID", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/vnd.github.v3+json",
+      Authorization: "token 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",
+    },
+    body: JSON.stringify({
+      files: {
+        "virtualdb.json": {
+          content: JSON.stringify(data),
+        },
       },
-      body: JSON.stringify({
-        message: 'Update virtual database',
-        content,
-        sha
-      })
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      updateMessage.textContent = "Data updated successfully";
+      updateForm.reset();
+    })
+    .catch((error) => {
+      updateMessage.textContent = "Error updating data";
     });
-    document.getElementById('message').textContent = 'Data updated successfully.';
-    document.getElementById('update-form').reset();
-  } catch (error) {
-    console.error(error);
-    document.getElementById('message').textContent = 'Error updating data.';
-  }
 });
 
-// View form submission
-const viewForm = document.getElementById('view-form');
-viewForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
+// View Form
+const viewForm = document.getElementById("view-form");
+const viewTable = document.getElementById("data-table");
+const viewMessage = document.getElementById("view-message");
 
-  const username = event.target.elements.username.value;
-  const password = event.target.elements.password.value;
+viewForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  try {
-    const response = await fetch('https://api.github.com/artemis-love/test1/blob/main/ex-service.json', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Basic ' + btoa(`${username}:${password}`)
-      }
-    });
-    const data = await response.json();
-    const content = atob(data.content);
-    const jsonData = JSON.parse(content);
-    let tableHtml = '<tr><th>Name</th><th>Age</th><th>Email</th></tr>';
-    jsonData.forEach((row) => {
-      tableHtml += `<tr><td>${row.name}</td><td>${row.age}</td><td>${row.email}</td></tr>`;
-    });
-    document.getElementById('data-table').innerHTML = tableHtml;
-    document.getElementById('view-message').textContent = 'Data retrieved successfully.';
-    document.getElementById('view-form').reset();
-  } catch (error) {
-    console.error(error);
-    document.getElementById('view-message').textContent = 'Error retrieving data.';
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  // Authenticate user
+  if (username !== "admin" || password !== "password") {
+    viewMessage.textContent = "Invalid username or password";
+    return;
   }
-});
 
-// Search form submission
-const searchForm = document.getElementById('search-form');
-searchForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const name = event.target.elements['name'].value;
-
-  try {
-    const response = await fetch('https://api.https://github.com/artemis-love/test1/blob/main/ex-service.json', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Basic ' + btoa('username:password')
-      }
-    });
-    const data = await response.json();
-    const content = atob(data.content);
-    const jsonData = JSON.parse(content);
-    const row = jsonData.find((item) => item.name === name);
-    let tableHtml = '<tr><th>Name</th><th>Age</th><th>Email</th></tr>';
-    if (row) {
-      tableHtml
+  // Make GET request to fetch data
+  fetch("https://api.github.com/gists/GIST_ID")
+    .then((response) => response.json())
+    .then((data) => {
+      const content = JSON.parse(data.files["virtualdb.json"].content);
+      const headers = ["Name", "Age",
