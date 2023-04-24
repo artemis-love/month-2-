@@ -55,7 +55,7 @@ viewForm.addEventListener("submit", (e) => {
   const password = document.getElementById("password").value;
 
   // Authenticate user
-  if (username !== "username" || password !== "123") {
+  if (username !== "vanatos" || password !== "123") {
     viewMessage.textContent = "Invalid username or password";
     return;
   }
