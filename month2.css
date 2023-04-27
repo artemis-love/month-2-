@@ -1,0 +1,86 @@
+div.flex-container{
+   height:300px;
+}
+.flex-container {
+   box-shadow: 0 3px 5px 1px rgba(218, 138, 35, 0.87);
+   text-align: center;
+   background-color: rgb(224, 245, 37);
+   display:flex;
+   flex-wrap:nowrap;
+   justify-content: center;
+   align-items: stretch;
+  
+  }
+  .child {
+    display: inline-block;
+    vertical-align: middle;
+    height: 200px;
+
+  }
+  .book{
+   text-shadow: 2cm;
+   font-weight: 100;
+   padding: 1cm;
+   box-shadow: 0 3px 7px 13px rgba(240, 188, 18, 0.4);
+   background: linear-gradient(90deg,#ffbb00 25%,#f15954 75%);
+   cursor: progress;
+  }
+  .give{
+     text-align: center;
+     font-style: oblique;
+     box-shadow: 0 5px 4px 7px rgba(84, 18, 240, 0.4);
+  }
+  
+ header{
+   position: absolute;
+   top: 0;
+   width: 98%;
+   display: flex;
+   justify-content: flex-end;
+   padding-right: 10px;
+}
+
+ header ul{
+   display: flex;
+   justify-self: center;
+   align-items: center;
+}
+
+ header ul li{
+   list-style: none;
+   margin-left: 20px;
+}
+
+ header ul li a{
+   color: black;
+   text-decoration: none;
+   font-size: 13px;
+}
+.table{
+   text-align: center;
+   align: center;
+   display:flex;
+   flex-wrap:nowrap;
+   justify-content: center;
+   
+}
+
+.table button{
+   background: linear-gradient(90deg,#00d9ff 25%,#7654f1 75%);
+   size: 5cm;
+   height: 55px; 
+   width: 80px;
+   font-size: 14px;
+   font-style: italic;
+   font-weight: bold;
+   color: bisque;
+   cursor:grab;
+   vertical-align: middle;
+   text-align: center;
+   position: relative;
+   justify-content: right;
+   margin: right 20%;;
+	margin: left 2px;
+}
+
+

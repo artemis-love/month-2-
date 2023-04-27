@@ -1,0 +1,54 @@
+header{
+    position: absolute;
+    top: 0;
+    width: 98%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+ }
+ 
+  header ul{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+ }
+ 
+  header ul li{
+    list-style: none;
+    margin-left: 20px;
+ }
+ 
+  header ul li a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 13px;
+  }
+.color{
+  background: linear-gradient(90deg,#ec60be 25%,#9c37df 75%);
+}
+.table{
+  text-align: center;
+  align: center;
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+  
+}
+
+.table button{
+  background: linear-gradient(90deg,#00d9ff 25%,#7654f1 75%);
+  size: 5cm;
+  height: 55px; 
+  width: 80px;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: bold;
+  color: bisque;
+  cursor:grab;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  justify-content: right;
+  margin: right 20%;;
+ margin: left 2px;
+}

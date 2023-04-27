@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="screen"></div>
+
+	<h2>Click the button below to generate a random number between 1 and 100:</h2>
+	<button onclick="generateRandomNumber()">Generate Random Number</button>
+	<p id="random-number"></p>
+</div>
+          
+   
+    <style>
+        
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+p {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  font-size: 24px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg,#ec60be 43%,#9c37df 57%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3E8E41;
+}
+
+#random-number {
+    display: block;
+    padding: 10px 20px;
+  text-align: center;
+  margin: 0 auto;
+  color: rgb(167, 107, 236);
+  font-size: 36px;
+  border:2cm;
+  margin-top: 50px;
+}
+    </style>
+    <div id="random-area"></div>
+<script>
+   function generateRandomNumber() {
+  // Generate a random number between 1 and 100
+  const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+  // Display the random number in the HTML
+  const randomNumberElement = document.getElementById("random-number");
+  randomNumberElement.innerHTML = "Your random number is: " + randomNumber;
+}
+</script>
+</body>
+</html>
